@@ -20,7 +20,7 @@ void setup() {
 
     // Setup the Remote Control's UI canvas
   LRemote.setName("JackJean");
-  
+
   // We use a protrail since it is easir to contorl joysticks
   LRemote.setOrientation(RC_PORTRAIT);
   LRemote.setGrid(4, 5);
@@ -31,7 +31,7 @@ void setup() {
   stick1.setColor(RC_ORANGE);
   LRemote.addControl(stick1);
 
-  
+
     // Add a simple text label
   label1.setText("(0, 0)");
   label1.setPos(0, 0);
@@ -39,7 +39,7 @@ void setup() {
   label1.setColor(RC_GREY);
   LRemote.addControl(label1);
 
-  
+
 
 
   // Start broadcasting our remote contoller
@@ -55,7 +55,7 @@ void setup() {
 
 
 void loop() {
-  // check if we are connect by some 
+  // check if we are connect by some
   // BLE central device, e.g. an mobile app
   if(!LRemote.connected()) {
     Serial.println("waiting for connection");
@@ -68,7 +68,7 @@ void loop() {
     // delay something like 100ms.
     delay(15);
   }
-  
+
   // Process the incoming BLE write request
   // and translate them to control events
   LRemote.process();
@@ -87,7 +87,7 @@ void loop() {
     label1.updateText(d.toString());
     myservo1.write(map(d.x,-100,100,0,180));
     myservo2.write(map(d.y,-100,100,0,100));
-  } 
-  
-  
+  }
+
+
 }
